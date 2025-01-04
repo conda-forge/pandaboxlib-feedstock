@@ -12,17 +12,17 @@ source:
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  number: 1
   script_env:
     - SETUPTOOLS_SCM_PRETEND_VERSION={{ version }}
 
 requirements:
   host:
-    - python >=3.6
+    - python {{ python_min }}
     - pip
     - setuptools_scm
   run:
-    - python >=3.6
+    - python >={{ python_min }}
 
 test:
   imports:
@@ -32,6 +32,7 @@ test:
     - python -m pandaboxlib.version
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/MaxIV-KitsControls/lib-maxiv-pandaboxlib
