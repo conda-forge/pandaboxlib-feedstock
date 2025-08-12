@@ -33,14 +33,15 @@ tests:
   - python:
       imports:
         - pandaboxlib
-      python_version: ${{ python_min }}.*
-  - requirements:
-      run:
-        - pip
-        - python ${{ python_min }}.*
-    script:
-      - pip check
+      pip_check: true
+      python_version:
+        - ${{ python_min }}.*
+        - 3.*
+  - script:
       - python -m pandaboxlib.version
+    requirements:
+      run:
+        - python ${{ python_min }}.*
 
 about:
   summary: Library to communicate with PandABox hardware
